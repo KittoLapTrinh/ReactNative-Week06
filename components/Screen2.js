@@ -1,7 +1,9 @@
-import {View,Button,ScrollView, Image, Text, StyleSheet,TextInput, TouchableOpacity,} from 'react-native'
+import {View,ScrollView, Image, Text, StyleSheet,TextInput, TouchableOpacity,} from 'react-native'
 import { FlatList } from 'react-native-web';
 
-function Screen2(navigation){
+
+function Screen2({navigation}){
+    
     const DATA=
         [
             {
@@ -27,14 +29,14 @@ function Screen2(navigation){
             },
             {
                 img: require('../assets/cap4.png'),
-                name: 'Cáp chuyển từ Cổng USB sang PS2...',
+                name: 'Cáp chuyển từ Cổng  USB sang PS2...',
                 price: '69.900 đ',
                 discount: '-39%',
                 rating: 15
             },
             {
                 img: require('../assets/cap5.png'),
-                title: 'Cáp chuyển từ Cổng USB sang PS2...',
+                name: 'Cáp chuyển từ Cổng USB sang PS2...',
                 price: '69.900 đ',
                 discount: '-39%',
                 rating: 15
@@ -71,16 +73,15 @@ function Screen2(navigation){
             </View>
             <ScrollView>
 
-                <FlatList data = {DATA} renderItem={({item})=>{
+                <FlatList data = {DATA} numColumns={2}  renderItem={({item})=>{
                     return(
-                       <View style={{backgroundColor: '#FFFFFF',borderWidth: 1, borderColor: '#C4C4C4', marginHorizontal: '40px', marginVertical: '20px' , }}>
+                       <View style={{backgroundColor: '#FFFFFF',borderWidth: 1, borderColor: '#C4C4C4', marginHorizontal: '5px', marginVertical: '20px' , }}>
                             <TouchableOpacity>
                                 <View style={{alignItems: 'center', marginVertical: '5px',flexDirection: 'row', justifyContent:'center'}}>
-                                    <Image source={item.img} style={{width: '85px', height: '78px', borderWidth: 1, borderColor: 'red'}}></Image>
-                                    <Text>{item.name}</Text>
+                                    <Image source={item.img} style={{width: '60px', height: '60px', borderWidth: 1, borderColor: 'red'}}></Image>                                    
                                 </View>
                             </TouchableOpacity>
-                           
+                            <Text style={{fontSize: 12}}>{item.name}</Text>
                             <View style={{flexDirection: 'row', justifyContent: "center", alignItems: 'center', }}>
                                 <Image style={{width: '13px', height: '13px'}} source={require('../assets/ngoisao.jpg')}></Image>
                                 <Image style={{width: '13px', height: '13px'}} source={require('../assets/ngoisao.jpg')}></Image>
@@ -110,10 +111,10 @@ function Screen2(navigation){
 
 
             <View style = {styles.bottom}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{navigation.navigate('Screen1')}}>
                     <Image style={{width: 30, height: 30, paddingVertical: '15px'}} source={require('../assets/menu.png')}></Image>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>{navigation.navigate('Screen1')}}>
                     <Image style={{width: 30, height: 30, paddingVertical: '15px'}} source={require('../assets/home.png')}></Image>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>{navigation.navigate('Screen1')}}>
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     top:{
-        flex: 5.5,
+        flex: 1.5,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
         
     },
     bottom:{
-        flex: 5,
+        flex: 1.5,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',

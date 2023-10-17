@@ -3,8 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import Screen1 from './components/Screen1';
 import Screen2 from './components/Screen2';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { NavigationContainer } from '@react-navigation/native';
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     // <View style={styles.container}>
@@ -12,14 +13,14 @@ export default function App() {
     //   <StatusBar style="auto" />
     // </View>
     // <Screen1/>
-    <Screen2/>
+    // <Screen2/>
 
-  // <NavigationContainer>
-  //   <Stack.Navigator >
-  //     <Stack.Screen name='Screen1' component={Screen1} />
-  //     <Stack.Screen name='Screen2' component={Screen2} />
-  //   </Stack.Navigator>
-  // </NavigationContainer>
+  <NavigationContainer>
+    <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='Screen1'> 
+      <Stack.Screen name='Screen1' component={Screen1}  />
+      <Stack.Screen name='Screen2' component={Screen2} />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
